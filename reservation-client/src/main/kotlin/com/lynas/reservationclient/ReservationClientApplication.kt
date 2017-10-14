@@ -1,5 +1,6 @@
 package com.lynas.reservationclient
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient
@@ -29,7 +30,7 @@ fun main(args: Array<String>) {
 interface ReservationReader {
     @RequestMapping(method = arrayOf(RequestMethod.GET), value = "/reservations")
     fun read(): Resources<Reservation>
-    
+
 }
 
 class Reservation(var reservationName: String? = null)
@@ -38,6 +39,11 @@ class Reservation(var reservationName: String? = null)
 @RequestMapping("/reservations")
 class ReservationApiAdapterRestController(val reservationReader: ReservationReader) {
 
+    fun fallback(): List<String> {
+        return listOf()
+    }
+
+    @HystrixCommand(fallbackMethod = "fallback")
     @GetMapping("/names")
     fun names(): List<String?> {
         return reservationReader.read().content.stream().map { it.reservationName }.toList()
