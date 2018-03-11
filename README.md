@@ -13,3 +13,8 @@ Useful Links
 * http://localhost:8010/hystrix/
 * http://localhost:9999/hystrix.stream
 * http://localhost:9411/zipkin/traces/a0d382cd907bc8be
+
+Useful commands
+
+export HOST_IP="$(hostname -i)"
+sudo docker run -it --rm -v /home/lynas/projects/microservice-demo-kotlin/config-service/build/libs:/home/gradle gradle bash
