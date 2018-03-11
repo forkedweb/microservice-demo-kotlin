@@ -11,7 +11,7 @@ eureka:
   instance:
     prefer-ip-address: true
     non-secure-port: 9999
-    ip-address: 172.17.0.6
+    ip-address: ${HOST_IP}
 hystrix:
   command:
     default:

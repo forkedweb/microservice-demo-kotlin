@@ -11,4 +11,4 @@ eureka:
   instance:
     prefer-ip-address: true
     non-secure-port: 8001
-    ip-address: 172.17.0.4
+    ip-address: ${HOST_IP}

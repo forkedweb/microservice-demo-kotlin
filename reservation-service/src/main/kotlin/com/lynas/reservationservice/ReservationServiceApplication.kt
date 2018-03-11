@@ -21,7 +21,7 @@ class ReservationServiceApplication{
 
     @Bean
     fun init(repository: ReservationRepository) = CommandLineRunner{
-        listOf("sazzad","rajjak","mohesh")
+        listOf("jodu","modu","kodu")
                 .forEach {
                     repository.save(Reservation(reservationName = it))
                 }
