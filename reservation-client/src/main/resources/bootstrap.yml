@@ -4,6 +4,8 @@ spring:
       uri: http://172.17.0.2:8888/
   application:
     name: reservation-client
+  zipkin:
+    baseUrl: http://172.17.0.7:9411/
 eureka:
   client:
     serviceUrl:
